@@ -13,25 +13,28 @@
             <h1 class="logo__name"><a href="#" class="logo">SINGOLO<span class="star">*</span></a></h1>
             <nav class="header__navigation">
                 <ul class="navigation">
-                    <li class="navigation__item"><a href="#" class="navigation__link">HOME</a></li>
-                    <li class="navigation__item"><a href="#" class="navigation__link">SERVICES</a></li>
-                    <li class="navigation__item"><a href="#" class="navigation__link">PORTFOLIO</a></li>
-                    <li class="navigation__item"><a href="#" class="navigation__link">ABOUT</a></li>
-                    <li class="navigation__item"><a href="#" class="navigation__link">CONTACT</a></li>
+                    <li class="navigation__item"><a href="#home" class="navigation__link active">HOME</a></li>
+                    <li class="navigation__item"><a href="#services" class="navigation__link">SERVICES</a></li>
+                    <li class="navigation__item"><a href="#portfolio" class="navigation__link">PORTFOLIO</a></li>
+                    <li class="navigation__item"><a href="#about" class="navigation__link">ABOUT</a></li>
+                    <li class="navigation__item"><a href="#contact" class="navigation__link">CONTACT</a></li>
                 </ul>
             </nav>
         </div>
     </header>
     <main class="main">
-            <section class="slider">
+            <section class="slider"  id="home">
                 <div class="slider__content">
                     <img src="assets/icons/prev.svg" alt="previous slide" class="slider__previous-arrow">
                     <img src="assets/icons/iPhone_vertical.png" alt="iphone vertical" class="slider__iphone-vertical">
                     <img src="assets/icons/iPhone_horizontal.png" alt="iphone horizontal" class="slider__iphone-horizontal">
                     <img src="assets/icons/next.svg" alt="next slide" class="slider__next-arrow">
+                    <div class="slider2 none"></div>
+                    <div class="black-vertical hidden"></div>
+                    <div class="black-horizontal hidden"></div>
                 </div>
             </section>
-            <section class="services">
+            <section class="services" id="services">
                 <div class="services__content">
                     <h2 class="services__topic">Our Services</h2>
                     <p class="services__text">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum. Duis mollis, non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
@@ -69,7 +72,7 @@
                     </article>
                 </div>
             </section>
-            <section class="portfolio">
+            <section class="portfolio" id="portfolio">
                 <div class="portfolio__content">
           
                   <h2 class="portfolio__topic">Portfolio</h2>
@@ -78,10 +81,10 @@
                     lacinia odio sem nec elit
                   </p>
                   <div class="portfolio__tags">
-                    <button class="tag">All</button>
-                    <button class="tag">Web Design</button>
-                    <button class="tag">Graphic Design</button>
-                    <button class="tag">Artwork</button>
+                    <button class="tag tag-active" id="tag-all">All</button>
+                    <button class="tag" id="tag-web">Web Design</button>
+                    <button class="tag" id="tag-design">Graphic Design</button>
+                    <button class="tag" id="tag-art">Artwork</button>
                   </div>
                   <div class="portfolio__images">
                     <ul class="portfolio__items">
@@ -102,7 +105,7 @@
                 </div> <!-- /portfolio__content -->
               </section>
           
-              <section class="about-us">
+              <section class="about-us" id="about">
                   <div class="about-us__content">
           
                       <h2 class="about-us__topic">About Us</h2>
@@ -114,10 +117,10 @@
                           <p class="personal__card-text">Quisque luctus, quam eget molestie commodo, lacus purus cursus purus, nec rutrum tellus dolor id lorem</p>
                           <div class="social-media-icons">
                               <ul class="social-media-items">
-                                <li><a href="#" class="facebook"><img src="assets/icons/facebook.svg" alt="link to facebook page"  /></a></li>
-                                <li><a href="#" class="google"><img src="assets/icons/google+.svg" alt="link to google page" /></a></li>
-                                <li><a href="#" class="twitter"><img src="assets/icons/twitter.svg" alt="link to twitter page" /></a></li>
-                                <li><a href="#" class="linkedin"><img src="assets/icons/linkedin.svg" alt="link to linkedin" /></a></li>
+                                <li><a href="" class="facebook"><img src="assets/icons/facebook.svg" alt="link to facebook page"  /></a></li>
+                                <li><a href="" class="google"><img src="assets/icons/google+.svg" alt="link to google page" /></a></li>
+                                <li><a href="" class="twitter"><img src="assets/icons/twitter.svg" alt="link to twitter page" /></a></li>
+                                <li><a href="" class="linkedin"><img src="assets/icons/linkedin.svg" alt="link to linkedin" /></a></li>
                               </ul>
                           </div>
                         </div>
@@ -127,10 +130,10 @@
                           <p class="personal__card-text">Curabitur vestibulum eget mauris quis laoreet. Phasellus in quam laoreet, viverra lacus ut, ultrices velit.</p>
                           <div class="social-media-icons">
                             <ul class="social-media-items">
-                              <li><a href="#" class="facebook"><img src="assets/icons/facebook.svg" alt="link to facebook page"  /></a></li>
-                              <li><a href="#" class="google"><img src="assets/icons/google+.svg" alt="link to google page" /></a></li>
-                              <li><a href="#" class="twitter"><img src="assets/icons/twitter.svg" alt="link to twitter page" /></a></li>
-                              <li><a href="#" class="linkedin"><img src="assets/icons/linkedin.svg" alt="link to linkedin" /></a></li>
+                              <li><a href="" class="facebook"><img src="assets/icons/facebook.svg" alt="link to facebook page"  /></a></li>
+                              <li><a href="" class="google"><img src="assets/icons/google+.svg" alt="link to google page" /></a></li>
+                              <li><a href="" class="twitter"><img src="assets/icons/twitter.svg" alt="link to twitter page" /></a></li>
+                              <li><a href="" class="linkedin"><img src="assets/icons/linkedin.svg" alt="link to linkedin" /></a></li>
                             </ul>
                           </div>
                         </div>
@@ -140,10 +143,10 @@
                           <p class="personal__card-text">Nulla sed nunc et tortor luctus faucibus. Morbi at aliquet turpis, et consequat felis. Quisque condimentum.</p>
                           <div class="social-media-icons">
                             <ul class="social-media-items">
-                              <li><a href="#" class="facebook"><img src="assets/icons/facebook.svg" alt="link to facebook page"  /></a></li>
-                              <li><a href="#" class="google"><img src="assets/icons/google+.svg" alt="link to google page" /></a></li>
-                              <li><a href="#" class="twitter"><img src="assets/icons/twitter.svg" alt="link to twitter page" /></a></li>
-                              <li><a href="#" class="linkedin"><img src="assets/icons/linkedin.svg" alt="link to linkedin" /></a></li>
+                              <li><a href="" class="facebook"><img src="assets/icons/facebook.svg" alt="link to facebook page"  /></a></li>
+                              <li><a href="" class="google"><img src="assets/icons/google+.svg" alt="link to google page" /></a></li>
+                              <li><a href="" class="twitter"><img src="assets/icons/twitter.svg" alt="link to twitter page" /></a></li>
+                              <li><a href="" class="linkedin"><img src="assets/icons/linkedin.svg" alt="link to linkedin" /></a></li>
                             </ul>
                           </div>
                       </div>
@@ -151,7 +154,7 @@
                       
                   </div> <!-- /about-us__content -->
               </section>
-              <section class="quote">
+              <section class="quote" id="contact">
                 <div class="quote__content">
                     <div class="quote__title">
                         <h2>Get a Quote</h2>
@@ -160,26 +163,47 @@
                         <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum. Duis mollis, non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
                     </div>
                     <div class="contact-form">
-                        <form action="#" method="POST">
-                            <input type="text" name="user-name" placeholder="Name (Required)" required>
+                        <form action="" method="POST">
+                            <input type="text" class="quote__input" name="user-name" placeholder="Name (Required)" required>
+                            <!-- <span class="quote__name-hint none">Please enter your name</span> -->
                             <input type="email" name="user-email" placeholder="Email (Required)" required>
+                            <!-- <span class="quote__mail-hint none">Please enter your email</span> -->
+                            <!-- <span class="quote__mail-hint-second none">Please enter valid email</span> -->
                             <input type="text" name="subject" placeholder="Subject">
-                            <textarea name="user-message" placeholder="Describe your project in detail..." cols="30" rows="13"></textarea>
+                            <textarea name="user-message" class="quote__textarea" placeholder="Describe your project in detail..." cols="30" rows="13"></textarea>
                             <button class="contact-form__button" type="submit" formmethod="POST">Submit</button>
                         </form>
                         <div class="contact-form__info">
                             <h3>Contact Information</h3>
                             <p>Quisque hendrerit purus dapibus, ornare nibh vitae, viver&shy;ra nibh. Fusce vitae aliquam tellus. Proin sit amet volutpat libero. Nulla sed nunc et tortor luctus faucibus. Morbi at aliquet turpis, et consequat felis. </p>
-                            <img class="location__icon" src="assets/icons/location.svg" />
+                            <img class="location__icon" src="assets/icons/location.svg" alt="location icon" />
                             <p class="address">Elm St. 14/05 Lost City</p>
-                            <img class="phone__icon" src="assets/icons/phone-solid.svg" />
+                            <img class="phone__icon" src="assets/icons/phone-solid.svg" alt="phone icon" />
                             <a class="phone" href="tel:035283318635">03528 331 86 35</a><br>
-                            <img class="mail__icon" src="assets/icons/envelope-solid.svg" />
+                            <img class="mail__icon" src="assets/icons/envelope-solid.svg" alt="mail icon" />
                             <a class="email" href="mailto:info@singolo.com">info@singolo.com</a>
                         </div>
                     </div>
                 </div>
             </section>
+            <!--Modal window-->
+            <!-- <div class="modal-window none">
+                <div class="modal-window__content">
+                    <h4 class="modal-window__title">
+                        Письмо отправлено
+                    </h4>
+                    <p class="modal-window__subject">
+                        Без темы
+                    </p>
+                    <p class="modal-window__describe">
+                        Без описания
+                    </p>
+                    <button class="modal-window__submit-btn">
+                        Ok
+                    </button>
+                </div>
+            </div> -->
+            <!--Modal window-->
     </main>
     <footer class="footer">
         <div class="footer__content">
@@ -192,13 +216,15 @@
             
             <div class="social-media-icons">
                 <ul class="social-media-items">
-                  <li><a href="#" class="facebook"><img src="assets/icons/facebook.svg" alt="link to facebook page"  /></a></li>
-                  <li><a href="#" class="google"><img src="assets/icons/google+.svg" alt="link to google page" /></a></li>
-                  <li><a href="#" class="twitter"><img src="assets/icons/twitter.svg" alt="link to twitter page" /></a></li>
-                  <li><a href="#" class="linkedin"><img src="assets/icons/linkedin.svg" alt="link to linkedin" /></a></li>
+                  <li><a href="" class="facebook"><img src="assets/icons/facebook.svg" alt="link to facebook page"  /></a></li>
+                  <li><a href="" class="google"><img src="assets/icons/google+.svg" alt="link to google page" /></a></li>
+                  <li><a href="" class="twitter"><img src="assets/icons/twitter.svg" alt="link to twitter page" /></a></li>
+                  <li><a href="" class="linkedin"><img src="assets/icons/linkedin.svg" alt="link to linkedin" /></a></li>
                 </ul>
             </div>
         </div>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
