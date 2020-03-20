@@ -25,11 +25,15 @@
     <main class="main">
             <section class="slider"  id="home">
                 <div class="slider__content">
-                    <img src="assets/icons/prev.svg" alt="previous slide" class="slider__previous-arrow">
-                    <img src="assets/icons/iPhone_vertical.png" alt="iphone vertical" class="slider__iphone-vertical">
-                    <img src="assets/icons/iPhone_horizontal.png" alt="iphone horizontal" class="slider__iphone-horizontal">
-                    <img src="assets/icons/next.svg" alt="next slide" class="slider__next-arrow">
-                    <div class="slider2 none"></div>
+                    <div class="slider1 show">
+                        <img src="assets/icons/iPhone_vertical.png" alt="iphone vertical" class="slider__iphone-vertical">
+                        <img src="assets/icons/iPhone_horizontal.png" alt="iphone horizontal" class="slider__iphone-horizontal">
+                    </div>
+                    <div class="slider2"></div>
+                    <div class="arrows">
+                        <img src="assets/icons/prev.svg" alt="previous slide" class="slider__previous-arrow">
+                        <img src="assets/icons/next.svg" alt="next slide" class="slider__next-arrow">
+                    </div>
                     <div class="black-vertical hidden"></div>
                     <div class="black-horizontal hidden"></div>
                 </div>
@@ -163,12 +167,9 @@
                         <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum. Duis mollis, non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
                     </div>
                     <div class="contact-form">
-                        <form action="" method="POST">
+                        <form method="POST" class="form">
                             <input type="text" class="quote__input" name="user-name" placeholder="Name (Required)" required>
-                            <!-- <span class="quote__name-hint none">Please enter your name</span> -->
                             <input type="email" name="user-email" placeholder="Email (Required)" required>
-                            <!-- <span class="quote__mail-hint none">Please enter your email</span> -->
-                            <!-- <span class="quote__mail-hint-second none">Please enter valid email</span> -->
                             <input type="text" name="subject" placeholder="Subject">
                             <textarea name="user-message" class="quote__textarea" placeholder="Describe your project in detail..." cols="30" rows="13"></textarea>
                             <button class="contact-form__button" type="submit" formmethod="POST">Submit</button>
@@ -186,25 +187,11 @@
                     </div>
                 </div>
             </section>
-            <!--Modal window-->
-            <!-- <div class="modal-window none">
-                <div class="modal-window__content">
-                    <h4 class="modal-window__title">
-                        Письмо отправлено
-                    </h4>
-                    <p class="modal-window__subject">
-                        Без темы
-                    </p>
-                    <p class="modal-window__describe">
-                        Без описания
-                    </p>
-                    <button class="modal-window__submit-btn">
-                        Ok
-                    </button>
-                </div>
-            </div> -->
-            <!--Modal window-->
+            <div class="modal hidden">
+                <div class="modal__message"></div>
+            </div>
     </main>
+
     <footer class="footer">
         <div class="footer__content">
             <div class="copyright">

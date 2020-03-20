@@ -1,54 +1,37 @@
 'use strict'
 
 window.onload = function() {
+    addTagClickHandler(); 
+}
 
-    // Nav
-    addNavClickHandler();
-    // Tag
-    addTagClickHandler();
-    
+// add scroll from navigation items to anchors && add active class to navigation items
+document.addEventListener('scroll', onScroll);
+
+function onScroll() {
+   const curPos = window.scrollY + 450;
+   const scrollHeight = Math.max(
+    document.body.scrollHeight, document.documentElement.scrollHeight,
+    document.body.offsetHeight, document.documentElement.offsetHeight,
+    document.body.clientHeight, document.documentElement.clientHeight
+  );
+   const sections = document.querySelectorAll('.main>section');      
+   const links = document.querySelectorAll('.header__navigation a');
+
+   sections.forEach((el) => {
+     if(el.offsetTop <= curPos && (el.offsetTop + el.offsetHeight) > curPos || curPos > (scrollHeight - screen.height)) {
+         links.forEach((a) => {
+             a.classList.remove('active');
+             if(el.getAttribute('id') === a.getAttribute('href').substring(1)) {
+                 a.classList.add('active');   
+             }
+         })
+     }
+ })
 }
 
 
-//  add smooth scroll from navigation items to anchors
-const anchors = document.querySelectorAll('a[href*="#"]')
 
-for (let anchor of anchors) {
-  anchor.addEventListener("click", function(event) {
-      event.preventDefault();
-      const blockID = anchor.getAttribute('href')
-      document.querySelector('' + blockID).scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-      })
-  })
-};
-
-
-//  add active class to navigation items
-const addNavClickHandler = () => {
-    document.querySelector('.navigation').addEventListener("click", (e) => {
-        if(e.target.classList.contains('navigation__link')) {
-            let clickedNav = e.target;
-            removeSelectedNavs();
-            selectClickedNav(clickedNav);
-        }
-    })
-}
-
-const removeSelectedNavs = () => {
-    let navs = document.querySelectorAll('.navigation .navigation__link');
-    navs.forEach(nav => {
-        nav.classList.remove('active');
-    })
-}
-
-const selectClickedNav = (clickedNav) => {
-    clickedNav.classList.add('active');
-}
-
-
-//  add black screen to phones
+//  add black screen on phones
 let iphoneVerticalScreen = document.querySelector('.slider__iphone-vertical'),
     iphoneBlackVertical = document.querySelector('.black-vertical'),
     iphoneHorizontalScreen = document.querySelector('.slider__iphone-horizontal'),
@@ -66,21 +49,56 @@ toggleScreen(iphoneVerticalScreen, iphoneBlackVertical);
 toggleScreen(iphoneHorizontalScreen, iphoneBlackHorizontal);
 
 
-//  add next slide in slider
-let prevArrow = document.querySelector('.slider__previous-arrow'),
-    nextArrow = document.querySelector('.slider__next-arrow'),
-    newSlide = document.querySelector('.slider2');
+//  add change slides function
+ let items = [document.querySelector('.slider1'), document.querySelector('.slider2')];
+ let currentItem = 0;
+ let isEnabled = true;
 
-function changeSlides(arrow, slide) {
-    arrow.addEventListener('click', function () {
-        if(slide.classList.contains('none')) {
-            slide.classList.remove('none');
-        } else slide.classList.add('none');
-    });
-}
+ function changeCurrentItem(n) {
+   currentItem = (n + items.length) % items.length;
+ }
 
-changeSlides(prevArrow, newSlide);
-changeSlides(nextArrow, newSlide);
+ function hideItem(direction) {
+   isEnabled = false;
+   items[currentItem].classList.add(direction);
+   items[currentItem].addEventListener('animationend', function() {
+     this.classList.remove('show', direction);
+   });
+ }
+ 
+ function showItem(direction) {
+   items[currentItem].classList.add(direction);
+   items[currentItem].addEventListener('animationend', function() {
+     this.classList.remove(direction);
+     this.classList.add('show');
+     isEnabled = true;
+   });
+ }
+
+ function previousItem(n) {
+   hideItem('to-right');
+   changeCurrentItem(n - 1);
+   showItem('from-left');
+ }
+
+ function nextItem(n) {
+   hideItem('to-left');
+   changeCurrentItem(n + 1);
+   showItem('from-right');
+ }
+ 
+ document.querySelector('.slider__previous-arrow').addEventListener('click', function() {
+   if(isEnabled) {
+     previousItem(currentItem);
+   } changeCurrentItem(currentItem - 1);
+ });
+ 
+ document.querySelector('.slider__next-arrow').addEventListener('click', function() {
+   if(isEnabled) {
+     nextItem(currentItem);
+   } changeCurrentItem(currentItem + 1);  
+ });
+
 
 
 //  add active class to portfolio tags
@@ -107,7 +125,7 @@ const selectClickedTag = (clickedTag) => {
 
 
 
-// mix portfolio images 
+//  mix portfolio images 
 let image = document.querySelectorAll('.portfolio__items .image');
 let listOfImages = document.querySelector('.portfolio__items'),
     images = document.querySelectorAll('.portfolio__items > li'),
@@ -153,87 +171,50 @@ for (let i = 0; i < image.length; i++) {
 
 
 
-// let submitBtn = document.querySelector('.contact-form__button'),
-//     formWindow = document.querySelector('.modal-window'),
-//     contentWindow = document.querySelector('.modal-window__content'),
-//     okFormBtn = document.querySelector('.modal-window__submit-btn'),
-//     formInputs = document.querySelectorAll('.quote__input'),
-//     formTextarea = document.querySelector('.quote__textarea'),
-//     nameHint = document.querySelector('.quote__name-hint'),
-//     mailHint = document.querySelector('.quote__mail-hint'),
-//     mailSecondHint = document.querySelector('.quote__mail-hint-second'),
-//     subjectText = document.querySelector('.modal-window__subject'),
-//     describeText = document.querySelector('.modal-window__describe');
+//  Modal window
+const button = document.querySelector(".contact-form__button");
+const modal = document.querySelector(".modal");
+const modalMessage = document.querySelector(".modal__message");
 
-// function cleanForm() {
-//     formInputs[0].value = '';
-//     formInputs[1].value = '';
-//     formInputs[2].value = '';
-//     formTextarea.value = '';
-//     contentWindow.style.width = '350px';
-//     contentWindow.style.height = '200px';
-// }
+//  Add Close button to modal window
+function addCloseButton(node){
+  node.innerHTML += "<button class='modal__close-button' type='button'>OK</button>";
+  const modalCloseButton = document.querySelector(".modal__close-button");
+  modalCloseButton.addEventListener("click", hideModal);
+  return node;
+}
 
-// okFormBtn.addEventListener('click', function () {
-// formWindow.classList.add('none');
-// cleanForm();
-// });
+//  Get value from form field
+function addNodeValue (node, fieldName, defaultValue = "Не заполнено", br) {
+  let value = document.querySelector(node).value;
+  value = (value == "") ? defaultValue : value;
+  return `<p>${fieldName}: ${value}</p>`;
+}
 
-// window.addEventListener('click', function (event) {
-// if (event.target === formWindow) {
-//     formWindow.classList.add('none');
-//     cleanForm();
-// }
-// });
+//  Show modal window
+function showModal () {
+  modal.classList.remove("hidden");
+}
 
+//  Hide modal window
+function hideModal () {
+  modal.classList.add("hidden");
+}
 
-// submitBtn.addEventListener('click', function (event) {
-// event.preventDefault();
+//  Create content of modal window
+button.addEventListener("click", (event) => {
+  let requiredFields = [...document.querySelectorAll("[required]")];
+  let isValid = node => node.checkValidity();
 
-// if (formInputs[0].value === '') {
-//     nameHint.classList.remove('none');
-// }
+  //  Check is valid
+  if ( requiredFields.every(isValid) ) {
+    event.preventDefault();
+    let message = "<p>The letter was sent</p>";
 
-// if (formInputs[1].value === '') {
-//     mailHint.classList.remove('none');
-// } else if (formInputs[1].value.search(/.+@.+\..+/i) === -1) {
-//     mailSecondHint.classList.remove('none');
-// }
-
-// if (formInputs[0].value !== '' && formInputs[1].value.search(/.+@.+\..+/i) !== -1) {
-//     if (formInputs[2].value === '') {
-//         subjectText.textContent = 'Тема: Без темы'
-//     } else subjectText.textContent = 'Тема: ' + formInputs[2].value;
-
-//     if (formTextarea.value === '') {
-//         describeText.textContent = 'Описание: Без описания'
-//     } else describeText.textContent = 'Описание: ' + formTextarea.value;
-
-
-//     if (formTextarea.value.length > 101 && formTextarea.value.length <= 401) {
-//         contentWindow.style.width = '410px';
-//         contentWindow.style.height = '300px';
-//     }
-
-//     if (formTextarea.value.length >= 402 && formTextarea.value.length < 601) {
-//         contentWindow.style.width = '440px';
-//         contentWindow.style.height = '370px';
-//     }
-
-//     if (formTextarea.value.length >= 601 && formTextarea.value.length <= 1000) {
-//         contentWindow.style.width = '520px';
-//         contentWindow.style.height = '450px';
-//     }
-
-//     formWindow.classList.remove('none');
-// }
-// });
-
-// formInputs[0].addEventListener('click', function () {
-// nameHint.classList.add('none');
-// });
-
-// formInputs[1].addEventListener('click', function () {
-// mailHint.classList.add('none');
-// mailSecondHint.classList.add('none');
-// });
+    message += addNodeValue("input[name='subject']", "Subject", "Without subject");
+    message += addNodeValue("textarea[name='user-message']", "Description", "Without description");
+    modalMessage.innerHTML = message;
+    addCloseButton(modalMessage);
+    showModal();
+  }
+});

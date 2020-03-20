@@ -1,13 +1,17 @@
+html {
+  scroll-behavior: smooth;
+}
 .body {
   margin: 0;
   padding: 0;
 }
 
 /* header */
+
 .header {
   position: sticky;
   top: 0px;
-  z-index: 1;
+  z-index: 2;
   width: 100%;
   height: 89px;
   background-color: #2d303a;
@@ -82,8 +86,8 @@ a {
   transition: 0.3s;
 }
 
-
 /* main */
+
 .main {
   width: 100%;
   min-height: 100px;
@@ -97,6 +101,12 @@ a {
   -moz-box-shadow: 0 6px 0 0 rgba(234, 103, 107, 1);
   box-shadow: 0 6px 0 0 rgba(234, 103, 107, 1);
   scroll-margin-top: 95px;
+}
+.slider1 {
+  display: none;
+}
+.slider1.show {
+  display: block;
 }
 .slider__content {
   position: relative;
@@ -150,6 +160,10 @@ a {
   background: url("assets/icons/slider2.svg") center;
   width: 940px;
   height: 600px;
+  display: none;
+}
+.slider2.show{
+  display: block;
 }
 .hidden,
 .none {
@@ -169,6 +183,46 @@ a {
   transform: scale(1.3);
   transition: 0.3s;
 }
+
+
+.to-left{
+  animation: 0.3s ease-in-out;
+  animation-name: left;
+}
+.to-right{
+  animation: 0.3s ease-in-out;
+  animation-name: right;
+  animation-direction: reverse;
+}
+.from-left{
+  animation: 0.3s ease-in-out;
+  animation-name: left;
+  animation-direction: reverse;
+}
+.from-right{
+  animation: 0.3s ease-in-out;
+  animation-name: right;
+}
+@keyframes left{
+  from{
+    left: 0;
+  }
+  to{
+    left: -100%;
+  }
+}
+@keyframes right{
+  from{
+    left: 100%;
+  }
+  to{
+    left: 0;
+  }
+}
+
+
+
+/* Services */
 .services {
   width: 100%;
   height: 500px;
@@ -562,6 +616,9 @@ a {
   max-width: 619px;
   height: 418px;
 }
+
+/* Form */
+
 input,
 textarea,
 .contact-form__button {
@@ -653,181 +710,54 @@ textarea::placeholder {
   margin-left: 20px;
 }
 
-
-/* ------ Input hints ------ */
-/* 
-.quote__name-hint {
+/* Modal window */
+.modal {
   position: absolute;
-  width: 250px;
-  height: 38px;
-  background: #fff;
-  color: #666d89;
-  opacity: 0.8;
-  top: 50px;
-  left: 50%;
-  padding-left: 10px;
-  padding-top: 12px;
-  font-size: 12px;
-  border-radius: 10px;
-  transition: all 0.5s ease;
-  z-index: 1;
-}
-
-.quote__name-hint:before {
-  content: "";
-  position: absolute;
-  top: -10px;
-  left: 0px;
-  border-left: 10px solid #fff;
-  border-right: 10px solid transparent;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-}
-
-.quote__mail-hint {
-  position: absolute;
-  width: 250px;
-  height: 38px;
-  background: #fff;
-  color: #666d89;
-  opacity: 0.8;
-  top: 104px;
-  left: 50%;
-  padding-left: 10px;
-  padding-top: 12px;
-  font-size: 12px;
-  border-radius: 10px;
-  transition: all 0.5s ease;
-  z-index: 1;
-}
-
-.quote__mail-hint:before {
-  content: "";
-  position: absolute;
-  top: -10px;
-  left: 0px;
-  border-left: 10px solid #fff;
-  border-right: 10px solid transparent;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-}
-
-.quote__mail-hint-second {
-  position: absolute;
-  width: 250px;
-  height: 38px;
-  background: #fff;
-  color: #666d89;
-  opacity: 0.8;
-  top: 104px;
-  left: 50%;
-  padding-left: 10px;
-  padding-top: 12px;
-  font-size: 12px;
-  border-radius: 10px;
-  transition: all 0.5s ease;
-  z-index: 1;
-}
-
-.quote__mail-hint-second:before {
-  content: "";
-  position: absolute;
-  top: -10px;
-  left: 0px;
-  border-left: 10px solid #fff;
-  border-right: 10px solid transparent;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-}
- */
-
-/* ------ Modal window ------ */
-/* 
-.modal-window {
-  position: fixed;
-  z-index: 10;
-  left: 0;
   top: 0;
+  left: 0;
+  z-index: 4;
+  display: flex;
+  justify-content: center;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
 }
-
-.modal-window__content {
-  position: absolute;
-  margin: auto;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  width: 350px;
-  height: 200px;
+.modal.hidden{
+  display: none;
+}
+.modal__message {
+  position: fixed;
+  top: 30%;
+  max-width: 50%;
+  padding: 30px 40px;
+  background-color: white;
   border-radius: 5px;
-  background-color: #fff;
-  opacity: 0.8;
-  padding: 20px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  -webkit-animation-name: animatetop;
-  -webkit-animation-duration: 0.4s;
-  animation-name: animatetop;
-  animation-duration: 0.4s;
 }
-
-@-webkit-keyframes animatetop {
-  from {
-      top: -300px;
-      opacity: 0
-  }
-  to {
-      top: 0;
-      opacity: 1
-  }
+.modal__message p:first-child {
+  margin-top: 0;
 }
-
-@keyframes animatetop {
-  from {
-      top: -300px;
-      opacity: 0
-  }
-  to {
-      top: 0;
-      opacity: 1
-  }
-}
-
-.modal-window__title {
-  margin-bottom: 30px;
-}
-
-.modal-window__content p {
-  margin-top: 10px;
-  font-size: 13px;
-  color: #666d89;
-}
-
-.modal-window__subject {
+.modal__message p {
+  max-height: 400px;
   overflow: hidden;
-  white-space: nowrap;
   text-overflow: ellipsis;
 }
-
-.modal-window__submit-btn {
-  text-transform: uppercase;
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  width: 70px;
-  height: 25px;
-  font-size: 12px;
-  background-color: #f48c8f;
-  color: #fff;
+.modal__close-button {
+  box-sizing: unset;
+  width: 100%;
+  height: 20px;
+  padding: 12px 0;
+  margin-top: 29px;
+  color: #a74540;
+  border-radius: 5px;
+  border: 2px solid #a74540;
+  transition: all 0.3s ease-in-out;
+}
+.modal__close-button:not(:disabled):hover {
+  color: white;
+  background: #a74540;
+  opacity: 1;
 }
 
-.modal-window__submit-btn:hover {
-  color: #fff;
-  background-color: #d6564f;
-}
- */
+/* Contact info */
 
 .contact-form__info h3 {
   width: 168px;
@@ -911,6 +841,7 @@ textarea::placeholder {
 }
 
 /* footer */
+
 .footer {
   height: 76px;
   max-width: 100%;
