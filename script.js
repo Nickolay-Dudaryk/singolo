@@ -67,9 +67,9 @@ toggleScreen(iphoneHorizontalScreen, iphoneBlackHorizontal);
  }
  
  function showItem(direction) {
-   items[currentItem].classList.add(direction);
+   items[currentItem].classList.add('next', direction);
    items[currentItem].addEventListener('animationend', function() {
-     this.classList.remove(direction);
+     this.classList.remove(direction, 'next');
      this.classList.add('show');
      isEnabled = true;
    });
@@ -90,13 +90,13 @@ toggleScreen(iphoneHorizontalScreen, iphoneBlackHorizontal);
  document.querySelector('.slider__previous-arrow').addEventListener('click', function() {
    if(isEnabled) {
      previousItem(currentItem);
-   } changeCurrentItem(currentItem - 1);
+   }
  });
  
  document.querySelector('.slider__next-arrow').addEventListener('click', function() {
    if(isEnabled) {
      nextItem(currentItem);
-   } changeCurrentItem(currentItem + 1);  
+   } 
  });
 
 
