@@ -103,6 +103,9 @@ a {
   scroll-margin-top: 95px;
 }
 .slider1 {
+  position: absolute;
+  width: 940px;
+  height: 600px;
   display: none;
 }
 .slider1.show {
@@ -123,18 +126,18 @@ a {
   height: 27px;
   z-index: 1;
 }
-.slider__iphone-vertical {
+.slider1 .slider__iphone-vertical {
   position: absolute;
   top: 53px;
-  left: 112px;
+  left: 73px;
   width: 240px;
   height: 483px;
   cursor: pointer;
 }
-.slider__iphone-horizontal {
+.slider1 .slider__iphone-horizontal {
   position: absolute;
   top: 173px;
-  right: 111px;
+  right: 71px;
   width: 484px;
   height: 240px;
   cursor: pointer;
@@ -142,7 +145,7 @@ a {
 .black-vertical{
   position: absolute;
   top: 118px;
-  left: 125px;;
+  left: 126px;;
   width: 189px;
   height: 333px;
   background-color: black;
@@ -184,23 +187,25 @@ a {
   transition: 0.3s;
 }
 
-
+.next {
+  display: block;
+}
 .to-left{
-  animation: 0.3s ease-in-out;
+  animation: .3s ease-in-out;
   animation-name: left;
 }
 .to-right{
-  animation: 0.3s ease-in-out;
+  animation: .3s ease-in-out;
   animation-name: right;
   animation-direction: reverse;
 }
 .from-left{
-  animation: 0.3s ease-in-out;
+  animation: .3s ease-in-out;
   animation-name: left;
   animation-direction: reverse;
 }
 .from-right{
-  animation: 0.3s ease-in-out;
+  animation: .3s ease-in-out;
   animation-name: right;
 }
 @keyframes left{
@@ -208,12 +213,12 @@ a {
     left: 0;
   }
   to{
-    left: -100%;
+    left: -200%;
   }
 }
 @keyframes right{
   from{
-    left: 100%;
+    left: 200%;
   }
   to{
     left: 0;

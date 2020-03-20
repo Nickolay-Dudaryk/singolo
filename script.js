@@ -35,7 +35,9 @@ function onScroll() {
 let iphoneVerticalScreen = document.querySelector('.slider__iphone-vertical'),
     iphoneBlackVertical = document.querySelector('.black-vertical'),
     iphoneHorizontalScreen = document.querySelector('.slider__iphone-horizontal'),
-    iphoneBlackHorizontal = document.querySelector('.black-horizontal');
+    iphoneBlackHorizontal = document.querySelector('.black-horizontal'),
+    prevArrow = document.querySelector('.slider__previous-arrow'),
+    nextArrow = document.querySelector('.slider__next-arrow');
 
 function toggleScreen(screen, blackScreen) {
 	screen.addEventListener('click', function () {
@@ -44,6 +46,16 @@ function toggleScreen(screen, blackScreen) {
 		} else blackScreen.classList.add('hidden');
 	});
 }
+
+prevArrow.addEventListener('click', function() {
+    iphoneBlackVertical.classList.add('hidden');
+    iphoneBlackHorizontal.classList.add('hidden');
+   });
+   
+nextArrow.addEventListener('click', function() {
+    iphoneBlackVertical.classList.add('hidden');
+    iphoneBlackHorizontal.classList.add('hidden');
+   });
 
 toggleScreen(iphoneVerticalScreen, iphoneBlackVertical);
 toggleScreen(iphoneHorizontalScreen, iphoneBlackHorizontal);
@@ -175,6 +187,7 @@ for (let i = 0; i < image.length; i++) {
 const button = document.querySelector(".contact-form__button");
 const modal = document.querySelector(".modal");
 const modalMessage = document.querySelector(".modal__message");
+const form = document.querySelector(".form");
 
 //  Add Close button to modal window
 function addCloseButton(node){
@@ -199,6 +212,7 @@ function showModal () {
 //  Hide modal window
 function hideModal () {
   modal.classList.add("hidden");
+  form.reset();
 }
 
 //  Create content of modal window
