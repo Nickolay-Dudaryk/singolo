@@ -4,6 +4,8 @@ window.onload = function() {
     addTagClickHandler(); 
 }
 
+
+
 // add scroll from navigation items to anchors && add active class to navigation items
 document.addEventListener('scroll', onScroll);
 
@@ -31,6 +33,33 @@ function onScroll() {
 
 
 
+// add fuctional to burger menu
+const navSlide = () => {
+  const burger = document.querySelector('.burger');
+  const nav = document.querySelector('.navigation');
+  const navLinks = document.querySelectorAll('.navigation li');
+ 
+  burger.addEventListener('click', () => {
+    // Toggle Nav
+    nav.classList.toggle('navigation-active');
+
+    // Animate Links
+    navLinks.forEach((link, index) => {
+      if(link.style.animation){
+        link.style.animation = '';
+      }
+      link.style.animation = `navLinkFade .5s ease forwards ${index / 7 + .5}s`;
+    });
+
+    // Burger animation after click
+    burger.classList.toggle('toggle');
+  })
+}
+
+navSlide();
+
+
+
 //  add black screen on phones
 let iphoneVerticalScreen = document.querySelector('.slider__iphone-vertical'),
     iphoneBlackVertical = document.querySelector('.black-vertical'),
@@ -50,15 +79,24 @@ function toggleScreen(screen, blackScreen) {
 prevArrow.addEventListener('click', function() {
     iphoneBlackVertical.classList.add('hidden');
     iphoneBlackHorizontal.classList.add('hidden');
-   });
+});
    
 nextArrow.addEventListener('click', function() {
     iphoneBlackVertical.classList.add('hidden');
     iphoneBlackHorizontal.classList.add('hidden');
-   });
+});
+
+iphoneBlackVertical.addEventListener('click', function() {
+  iphoneBlackVertical.classList.add('hidden');
+})
+
+iphoneBlackHorizontal.addEventListener('click', function() {
+  iphoneBlackHorizontal.classList.add('hidden');
+})
 
 toggleScreen(iphoneVerticalScreen, iphoneBlackVertical);
 toggleScreen(iphoneHorizontalScreen, iphoneBlackHorizontal);
+
 
 
 //  add change slides function
@@ -162,7 +200,6 @@ tagArtwork.addEventListener('click', mixImages);
 
 
 
-
 // Image border
 for (let i = 0; i < image.length; i++) {
 
@@ -172,8 +209,6 @@ for (let i = 0; i < image.length; i++) {
                 item.classList.remove('bordered');
             }
         });
-
-
         if (event.target.classList.contains('bordered')) {
             event.target.classList.remove('bordered');
         }
